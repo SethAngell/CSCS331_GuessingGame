@@ -12,10 +12,11 @@ public class ScoreKeeper {
 	
 	
 	
-	public ScoreKeeper( Player CurrentPlayer, ArrayList<Levels> Scores ) {
+	public ScoreKeeper( Player CurrentPlayer ) {
 		
 		String[] TimePlayedList = { CurrentPlayer.getPlayerName(), CurrentPlayer.timePlayed.toString()};
 		TimePlayed = TimePlayedList;
+		ArrayList<Levels> Scores = CurrentPlayer.levelsList;
 		
 		for ( Levels L : Scores ) {
 			L.getAverage();
@@ -82,7 +83,7 @@ public class ScoreKeeper {
 	private String[] ComputeAverage( ArrayList<Player> Players, int TargetedLevel ) {
 		String[] CurrentWinner = { "Null", "0" };
 		Double Average = (double) 0;
-		int index = 0;
+		double index = 0;
 		
 		for ( Player P : Players ) {
 			for ( Levels L : P.levelsList ) {

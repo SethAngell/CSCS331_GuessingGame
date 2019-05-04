@@ -91,16 +91,23 @@ public class OneGame extends Game {
 	}
 	
 	
-	public String checkValue(int guess) {
-		if ( ( guess > this.maxNumber )  || ( guess < 0 ) ) {  // Checks out of bounds
+	public String checkValue(String guess) {
+		
+		Integer Guess = 0;
+		
+		Guess += Guess.parseInt(guess);
+		
+		this.guesses ++;
+		
+		if ( ( Guess > this.maxNumber )  || ( Guess < 0 ) ) {  // Checks out of bounds
 			clue = ("Your guess fell outside of the predefined range!");
-		} else if ( guess == this.randNumber ) {  // Checks correct
-//			clue = ("Correct! The number was " + guess.toString() + ". You win!" );
+		} else if ( Guess == this.randNumber ) {  // Checks correct
+			clue = ("Correct! The number was " + Guess.toString() + ". You win!" );
 			correct = true;
-		} else if ( guess < this.randNumber ) {  // Checks Lower bound
-			clue = ("<");
-		} else if (guess > this.randNumber ){  // Checks higher bound
-			clue = ( ">" );
+		} else if ( Guess < this.randNumber ) {  // Checks Lower bound
+			clue = (">");
+		} else if (Guess > this.randNumber ){  // Checks higher bound
+			clue = ( "<" );
 		}
 		return clue;
 		
@@ -113,8 +120,36 @@ public class OneGame extends Game {
 		
 		return false;
 	}
-	
-	
-	
+
+	@Override
+	public int getLevel() {
+		// TODO Auto-generated method stub
+		return 1;
+	}
+
+	@Override
+	public int getGuesses() {
+		// TODO Auto-generated method stub
+		return this.guesses;
+	}
+
+	@Override
+	public int getMax() {
+		// TODO Auto-generated method stub
+		return this.maxNumber;
+	}
+
+	@Override
+	public String getClue() {
+		// TODO Auto-generated method stub
+		return this.clue;
+	}
+
+	@Override
+	public int getRand() {
+		// TODO Auto-generated method stub
+		return this.randNumber;
+	}
+		
 	
 }

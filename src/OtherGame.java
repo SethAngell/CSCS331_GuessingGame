@@ -5,13 +5,11 @@ import java.util.StringTokenizer;
 
 public class OtherGame extends Game implements IGame{
 	//Guesses will be used in statistics
-	int guesses;
-	
-	String clue;	
-	
-	int lvl;
-	
+	public  int guesses;
+	public String clue;	
+	public final int lvl;
 	ArrayList<Integer> answer = new ArrayList<Integer>();
+	int randNumber = 1;
 	
 	public OtherGame(int level) {
 		
@@ -30,8 +28,6 @@ public class OtherGame extends Game implements IGame{
 		}
 	}
 
-
-	@Override
 	public String checkValue(String input) {
 		// TODO Auto-generated method stub
 		
@@ -93,13 +89,6 @@ public class OtherGame extends Game implements IGame{
 		
 	}
 
-	@Override
-	public void getInput() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 	public boolean gameOver() {
 		
 		String check = "("+ lvl +"," + lvl+")";
@@ -115,30 +104,40 @@ public class OtherGame extends Game implements IGame{
 		return this.lvl;
 	}
 	
-	public static void main(String[] args) {
+	public String getClue() {
+		return this.clue;
+	}
+	
+	public void setClue(String clue) {
+		this.clue = clue;
+	}
+	
+	
+	public int getGuesses() {
+		return guesses;
+	}
+	
+	public void setGuesses(int num) {
+		this.guesses = num;
+	}
+
+
+	@Override
+	public int getMax() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void getInput() {
 		// TODO Auto-generated method stub
 		
-		OtherGame test = new OtherGame(3);
-		
-		while (true){
-			
-			Scanner input = new Scanner(System.in);
-				
-			String guess = input.nextLine();
-			
-			System.out.println(test.checkValue(guess));
-		
-			System.out.println(test.clue);
-			
-			if(test.gameOver()) {
-				
-				System.out.println(test.guesses);
-				break;
-			}
-		}
-		
-	
+	}
 
+	@Override
+	public int getRand() {
+		// TODO Auto-generated method stub
+		return this.randNumber;
 	}
 
 }
